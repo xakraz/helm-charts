@@ -214,6 +214,9 @@ server:
   ingress:
     enabled: false
 
+    ## For Ingresses in 'networking.k8s.io/v1' starting k8s 1.19
+    ingressClassName: ""
+
     ## Annotations to be added to the web ingress.
     ##
     # annotations:
