@@ -10,40 +10,17 @@ on:
       - charts/**/*
       - scripts/build-repo.sh
 jobs:
-  helm-publish:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    needs: [helm-lint]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.0.0
-        with:
-          fetch-depth: '0'
-      - name: Download Helm
-        run: |
-          curl -L https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz | tar -xzf - --strip-component=1 linux-amd64/helm
-          chmod +x helm
-      - name: Package charts
-        run: |
-          sh ./scripts/build-repo.sh
-      - name: Push to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v2.9.0
-        env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./repo
-        with:
-          forceOrphan: true
-
   helm-lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2.0.0
+
       - name: Download Helm
         run: |
           curl -L https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz | tar -xzf - --strip-component=1 linux-amd64/helm
           chmod +x helm
+
       - name: Lint using helm
         run: |
           ./helm lint charts/*
