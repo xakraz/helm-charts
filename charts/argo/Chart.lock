@@ -1,0 +1,6 @@
+dependencies:
+- name: minio
+  repository: https://charts.helm.sh/stable/
+  version: 5.0.6
+digest: sha256:f9371c4e8c0b63b1faf3d737402cbf910cbba67c52104a48a4cdbc631f5fc5be
+generated: "2023-01-24T18:35:07.5804511+01:00"
