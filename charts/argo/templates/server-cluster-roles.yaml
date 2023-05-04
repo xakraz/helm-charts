@@ -30,11 +30,13 @@ rules:
   - serviceaccounts
   verbs:
   - get
+  - list
 - apiGroups:
   - ""
   resources:
   - secrets
   verbs:
+  - create
   - get
 {{- with .Values.server.rbac.secretWhitelist }}
   resourceNames: {{- toYaml . | nindent 4 }}
