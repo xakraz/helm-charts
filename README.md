@@ -1,7 +1,3 @@
-# xakraz Helm chart
+# xakraz's Helm charts
 
-## Repository contents
-
-### Charts
-
-* [dex](charts/dex)
+Forked charts for contributions or EOL charts for maintenance/migration purposes 
